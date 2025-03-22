@@ -12,7 +12,7 @@ GESTURES = ["hello", "help", "good", "stop", "please"]
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load the trained model
-def load_model(model_path="data/models/trained/mobilenet_gestures.pth"):
+def load_model(model_path="try_out/models/mobilenet_gestures.pth"):
     model = models.mobilenet_v2(pretrained=False)
     model.features[0][0] = nn.Conv2d(1, 32, kernel_size=3, stride=2, padding=1)
     model.classifier[1] = nn.Linear(model.classifier[1].in_features, len(GESTURES))
